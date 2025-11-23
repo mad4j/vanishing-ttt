@@ -29,6 +29,9 @@ class VanishingTicTacToe {
         // Game over flag
         this.gameOver = false;
         
+        // Winner of the game
+        this.winner = null;
+        
         // All possible winning lines
         this.WINNING_LINES = [
             // Rows
@@ -100,12 +103,14 @@ class VanishingTicTacToe {
             
             if (cell1 && cell1 === cell2 && cell2 === cell3) {
                 this.winningLine = line;
+                this.winner = this.currentPlayer;
                 this.gameOver = true;
                 return;
             }
         }
         
         this.winningLine = null;
+        this.winner = null;
     }
     
     /**
@@ -170,7 +175,16 @@ class VanishingTicTacToe {
         this.currentPlayer = 'X';
         this.moves = [];
         this.winningLine = null;
+        this.winner = null;
         this.gameOver = false;
+    }
+    
+    /**
+     * Get the winner of the game
+     * @returns {string|null} - 'X', 'O', or null
+     */
+    getWinner() {
+        return this.winner;
     }
 }
 
@@ -219,18 +233,20 @@ class AIPlayer {
         const emptyCells = game.getEmptyCells();
         
         for (const cell of emptyCells) {
-            // Simulate the move
+            // Create a simulated game state
             const simulatedGame = game.clone();
             
-            // If checking for opponent, need to switch player first
-            if (player !== game.currentPlayer) {
+            // Set the player we're testing for
+            // If testing a different player than current, switch to that player
+            if (player !== simulatedGame.currentPlayer) {
                 simulatedGame.switchPlayer();
             }
             
+            // Make the move and check if it wins
             simulatedGame.makeMove(cell.x, cell.y);
             
-            // Check if this move wins the game
-            if (simulatedGame.gameOver) {
+            // Check if this move resulted in a win for the target player
+            if (simulatedGame.gameOver && simulatedGame.getWinner() === player) {
                 return cell;
             }
         }

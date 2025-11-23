@@ -132,7 +132,7 @@ function updateUI() {
     
     // Update status
     if (game.gameOver) {
-        const winner = game.currentPlayer;
+        const winner = game.getWinner();
         statusElement.textContent = `Player ${winner} wins!`;
         statusElement.style.color = winner === 'X' ? 'var(--x-color)' : 'var(--o-color)';
         drawWinningLine();
