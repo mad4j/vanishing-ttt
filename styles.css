@@ -78,7 +78,7 @@ body {
     position: relative;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 0;
     aspect-ratio: 1;
     flex: 1;
     max-height: calc(90vh - 100px);
@@ -86,8 +86,7 @@ body {
 
 .cell {
     background: var(--cell-bg);
-    border: none;
-    border-radius: 10px;
+    border: 2px solid var(--border-color);
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -96,6 +95,23 @@ body {
     font-weight: bold;
     transition: all 0.2s ease;
     position: relative;
+}
+
+/* Remove outer borders to create # pattern */
+.cell[data-x="0"] {
+    border-left: none;
+}
+
+.cell[data-x="2"] {
+    border-right: none;
+}
+
+.cell[data-y="0"] {
+    border-top: none;
+}
+
+.cell[data-y="2"] {
+    border-bottom: none;
 }
 
 .cell:hover:not(.occupied) {
