@@ -37,8 +37,6 @@ body {
     max-height: 90vh;
 }
 
-
-
 .game-info {
     display: flex;
     justify-content: space-between;
@@ -174,8 +172,6 @@ body {
         stroke-dashoffset: 0;
     }
 }
-
-
 
 /* Responsive Design */
 @media (max-width: 600px) {
