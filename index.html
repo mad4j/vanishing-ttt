@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vanishing Tic-Tac-Toe - A twist on the classic game where symbols vanish after the third move">
+    <meta name="theme-color" content="#2c3e50">
+    <title>Vanishing Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512x512.png">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Vanishing Tic-Tac-Toe</h1>
+            <p class="subtitle">Each player can only have 3 symbols on the board!</p>
+        </header>
+
+        <main>
+            <div class="game-info">
+                <div class="status" id="status">Player X's turn</div>
+                <button class="reset-btn" id="resetBtn">New Game</button>
+            </div>
+
+            <div class="game-board" id="gameBoard">
+                <div class="cell" data-x="0" data-y="0"></div>
+                <div class="cell" data-x="1" data-y="0"></div>
+                <div class="cell" data-x="2" data-y="0"></div>
+                <div class="cell" data-x="0" data-y="1"></div>
+                <div class="cell" data-x="1" data-y="1"></div>
+                <div class="cell" data-x="2" data-y="1"></div>
+                <div class="cell" data-x="0" data-y="2"></div>
+                <div class="cell" data-x="1" data-y="2"></div>
+                <div class="cell" data-x="2" data-y="2"></div>
+                <svg class="winning-line" id="winningLine" xmlns="http://www.w3.org/2000/svg">
+                    <line id="line" x1="0" y1="0" x2="0" y2="0" stroke="#e74c3c" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <div class="instructions">
+                <h3>How to Play:</h3>
+                <ul>
+                    <li>Click on a cell to place your X</li>
+                    <li>Each player can only have 3 symbols on the board</li>
+                    <li>After 3 moves, your oldest symbol vanishes</li>
+                    <li>Get 3 in a row to win!</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>A Progressive Web App implementation</p>
+        </footer>
+    </div>
+
+    <script src="game.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
